@@ -1,4 +1,7 @@
 # cuitoficio
+```
+$ git clone https://github.com/lauchimoon/cuitoficio.git
+```
 
 ## Cargar virtual environment
 ```
