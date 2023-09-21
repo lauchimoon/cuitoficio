@@ -32,13 +32,13 @@ for row in lines[1:]:
     name, acts = get_activities(cuit)
 
     print(f'{name} listo')
-    data[name] = acts
+    data[name] = [acts, cuit]
 
     time.sleep(SECONDS_INTERVAL)
 
 out = open('output.csv', 'w')
 writer = csv.writer(out)
-writer.writerow(['Empresa', 'Actividades'])
+writer.writerow(['Empresa', 'Actividades', 'CUIT'])
 for comp, acts in data.items():
-    writer.writerow([comp, acts])
+    writer.writerow([comp, acts[0], acts[1]])
 
