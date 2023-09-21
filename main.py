@@ -23,7 +23,7 @@ f = open('cuits.csv', 'r', newline='')
 lines = f.readlines()
 data = {}
 
-for row in lines[1:]:
+for row in lines[98:101]:
     cuit = row.split(',')[2].strip()
 
     # Remove floating point part...
@@ -38,7 +38,7 @@ for row in lines[1:]:
 
 out = open('output.csv', 'w')
 writer = csv.writer(out)
-writer.writerow(['Empresa', 'Actividades', 'CUIT'])
-for comp, acts in data.items():
-    writer.writerow([comp, acts[0], acts[1]])
+writer.writerow(['CUIT', 'Empresa', 'Actividades'])
+for comp, info in data.items():
+    writer.writerow([info[1], comp, info[0]])
 
