@@ -23,18 +23,21 @@ f = open('cuits.csv', 'r', newline='')
 lines = f.readlines()
 data = {}
 
-for row in lines[98:101]:
-    cuit = row.split(',')[2].strip()
+for row in lines[1:]:
+    try:
+        cuit = row.split(',')[2].strip()
 
-    # Remove floating point part...
-    until_float = cuit.find('.0')
-    cuit = cuit[:until_float]
-    name, acts = get_activities(cuit)
+        # Remove floating point part...
+        until_float = cuit.find('.0')
+        cuit = cuit[:until_float]
+        name, acts = get_activities(cuit)
 
-    print(f'{name} listo')
-    data[name] = [acts, cuit]
+        print(f'{name} listo')
+        data[name] = [acts, cuit]
 
-    time.sleep(SECONDS_INTERVAL)
+        time.sleep(SECONDS_INTERVAL)
+    except:
+        continue
 
 out = open('output.csv', 'w')
 writer = csv.writer(out)
